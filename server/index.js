@@ -64,27 +64,47 @@ const auth = async (req, res, next) => {
 app.post('/api/auth/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 8);
+
+    // Ensure password is hashed before saving
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const user = new User({ name, email, password: hashedPassword });
     await user.save();
+
     res.status(201).send({ message: 'User created successfully' });
   } catch (error) {
-    res.status(400).send(error);
+    console.error("Registration error:", error.message);
+    res.status(400).send({ error: error.message });
   }
 });
+
 
 app.post('/api/auth/login', async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log("Login attempt:", email, password); // Log input data
+
     const user = await User.findOne({ email });
-    if (!user) throw new Error('Invalid credentials');
+    if (!user) {
+      console.log("User not found");
+      throw new Error("Invalid credentials");
+    }
+
+    console.log("User found:", user);
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) throw new Error('Invalid credentials');
+    console.log("Password match:", isMatch);
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET || 'your-secret-key');
+    if (!isMatch) {
+      throw new Error("Invalid credentials");
+    }
+
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET || 'your-secret-key', { expiresIn: '1h' });
+    console.log("Generated token:", token);
+
     res.send({ token });
   } catch (error) {
+    console.error("Login error:", error.message);
     res.status(400).send({ error: error.message });
   }
 });
@@ -132,6 +152,10 @@ app.delete('/api/tasks/:id', auth, async (req, res) => {
     res.status(500).send(error);
   }
 });
+
+// const cors = require('cors');
+// app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+
 
 // ✅ Start Server
 app.listen(PORT, () => {
