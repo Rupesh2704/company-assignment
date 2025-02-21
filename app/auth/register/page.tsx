@@ -65,8 +65,8 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-blue-100 flex items-center justify-center p-4">
-      <Card className="max-w-md w-full p-8 space-y-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-800 to-black flex items-center justify-center p-4">
+      <Card className="max-w-md w-full p-8 space-y-6 shadow-lg rounded-lg">
         <div className="space-y-2">
           <Link href="/" className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900">
             <ArrowLeft className="mr-2 h-4 w-4" />

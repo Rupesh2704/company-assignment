@@ -7,11 +7,11 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-indigo-50 to-blue-100 flex items-center justify-center p-4">
-      <Card className="max-w-lg w-full p-8 space-y-6">
+    <main className="min-h-screen bg-gradient-to-br from-gray-800 to-black flex items-center justify-center p-4">
+      <Card className="max-w-lg w-full p-8 space-y-6 shadow-xl rounded-lg">
         <div className="text-center space-y-2">
-          <h1 className="text-3xl font-bold text-gray-900">TaskFlow AI</h1>
-          <p className="text-gray-600">
+          <h1 className="text-4xl font-bold text-gray-900">TaskFlow AI</h1>
+          <p className="text-gray-700">
             Intelligent task management powered by AI
           </p>
         </div>
@@ -19,13 +19,13 @@ export default function Home() {
         <div className="space-y-4">
           <div className="grid gap-4">
             <Link href="/auth/login">
-              <Button className="w-full" size="lg">
+              <Button className="w-full bg-blue-600 hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105" size="lg">
                 Login
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
             <Link href="/auth/register">
-              <Button variant="outline" className="w-full" size="lg">
+              <Button variant="outline" className="w-full border-blue-600 hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out transform hover:scale-105" size="lg">
                 Create Account
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -44,20 +44,20 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-2 gap-4 text-center text-sm">
-            <div className="p-4 rounded-lg bg-white/50 shadow-sm">
-              <h3 className="font-medium">AI-Powered</h3>
+            <div className="p-4 rounded-lg bg-white/50 shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
+              <h3 className="font-medium text-gray-800">AI-Powered</h3>
               <p className="text-gray-600">Smart task suggestions</p>
             </div>
-            <div className="p-4 rounded-lg bg-white/50 shadow-sm">
-              <h3 className="font-medium">Real-time</h3>
+            <div className="p-4 rounded-lg bg-white/50 shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
+              <h3 className="font-medium text-gray-800">Real-time</h3>
               <p className="text-gray-600">Live updates</p>
             </div>
-            <div className="p-4 rounded-lg bg-white/50 shadow-sm">
-              <h3 className="font-medium">Collaborative</h3>
+            <div className="p-4 rounded-lg bg-white/50 shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
+              <h3 className="font-medium text-gray-800">Collaborative</h3>
               <p className="text-gray-600">Team management</p>
             </div>
-            <div className="p-4 rounded-lg bg-white/50 shadow-sm">
-              <h3 className="font-medium">Secure</h3>
+            <div className="p-4 rounded-lg bg-white/50 shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
+              <h3 className="font-medium text-gray-800">Secure</h3>
               <p className="text-gray-600">JWT authentication</p>
             </div>
           </div>

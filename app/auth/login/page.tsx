@@ -56,14 +56,14 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-blue-100 flex items-center justify-center p-4">
-      <Card className="max-w-md w-full p-8 space-y-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-800 to-black flex items-center justify-center p-4">
+      <Card className="max-w-md w-full p-8 space-y-6 shadow-lg rounded-lg">
         <div className="space-y-2">
-          <Link href="/" className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900">
+          <Link href="/" className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 transition duration-300 ease-in-out transform hover:scale-105">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to home
           </Link>
-          <h1 className="text-2xl font-bold">Login to TaskFlow AI</h1>
+          <h1 className="text-2xl font-bold text-gray-800">Login to TaskFlow AI</h1>
           <p className="text-gray-600">Enter your credentials to access your account</p>
         </div>
 
@@ -77,6 +77,7 @@ export default function Login() {
               required
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition duration-200"
             />
           </div>
           <div className="space-y-2">
@@ -87,9 +88,10 @@ export default function Login() {
               required
               value={formData.password}
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              className="border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition duration-200"
             />
           </div>
-          <Button type="submit" className="w-full" disabled={isLoading}>
+          <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105" disabled={isLoading}>
             {isLoading ? "Logging in..." : "Login"}
           </Button>
         </form>
@@ -97,7 +99,7 @@ export default function Login() {
         <div className="text-center text-sm">
           <p className="text-gray-600">
             Don't have an account?{" "}
-            <Link href="/auth/register" className="text-blue-600 hover:underline">
+            <Link href="/auth/register" className="text-blue-600 hover:underline transition duration-300 ease-in-out transform hover:scale-105">
               Sign up
             </Link>
           </p>
