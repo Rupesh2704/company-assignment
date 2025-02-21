@@ -12,6 +12,11 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
+app.use(cors({
+  origin: "*",  // OR specify frontend URL like "https://company-assignment-35iq.vercel.app"
+  methods: ["GET", "POST", "PATCH", "DELETE"]
+}));
+
 // ✅ Correct MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('✅ Connected to MongoDB'))
