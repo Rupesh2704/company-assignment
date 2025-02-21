@@ -9,6 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// mongodb+srv://rupeshdahibhate94:<db_password>@cluster01.f3umm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster01
 // MongoDB connection
 mongoose.connect('mongodb://rupeshdahibhate94:9sL3RQUSm1KCLKjv@rupeshdahibhate94/?ssl=true&replicaSet=atlas-k51w25-shard-0&authSource=admin&retryWrites=true&w=majority&appName=mydatabase')
   .then(() => console.log('Connected to MongoDB'))
