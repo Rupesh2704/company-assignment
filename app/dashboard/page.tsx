@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { API_BASE_URL } from "@/app/config/config"; // If inside app/config
 import {
   Select,
   SelectContent,
@@ -33,6 +34,7 @@ interface Task {
   createdAt: string;
 }
 
+
 export default function Dashboard() {
   const router = useRouter();
   const { toast } = useToast();
@@ -55,11 +57,12 @@ export default function Dashboard() {
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/tasks", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await fetch(`${API_BASE_URL}/api/tasks`
+        , {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
       if (!response.ok) throw new Error("Failed to fetch tasks");
       const data = await response.json();
       setTasks(data);
@@ -77,7 +80,7 @@ export default function Dashboard() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3001/api/tasks", {
+      const response = await fetch(`${API_BASE_URL}/api/tasks`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -113,7 +116,7 @@ export default function Dashboard() {
 
   const handleDeleteTask = async (taskId: string) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/tasks/${taskId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/tasks/${taskId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
