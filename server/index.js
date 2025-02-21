@@ -9,11 +9,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// mongodb+srv://rupeshdahibhate94:<db_password>@cluster01.f3umm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster01
-// MongoDB connection
-mongoose.connect('MONGO_URI=mongodb+srv://rupeshdahibhate94:9sL3RQUSm1KCLKjv@cluster01.mongodb.net/sample_mflix?retryWrites=true&w=majority')
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
+// ✅ Correct MongoDB Connection
+mongoose.connect(process.env.MONGODB_URI, { 
+  useNewUrlParser: true, 
+  useUnifiedTopology: true 
+})
+  .then(() => console.log('✅ Connected to MongoDB'))
+  .catch(err => console.error('❌ MongoDB connection error:', err));
 
 // User Schema
 const userSchema = new mongoose.Schema({
@@ -135,5 +137,5 @@ app.delete('/api/tasks/:id', auth, async (req, res) => {
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`🚀 Server running on port ${port}`);
 });
